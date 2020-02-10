@@ -1489,6 +1489,8 @@ Object.assign(THREE.TGXLoader.prototype, {
 						var faceIndex = start+i;
 
 						var tri = part.primitiveType === 3 || i & 1 ? [0, 1, 2] : [2, 1, 0];
+						
+						if (indexBuffer[faceIndex] == 65535 || indexBuffer[faceIndex+1] == 65535 || indexBuffer[faceIndex+2] == 65535) continue;
 
 						for (var j=0; j<3; j++) {
 							var index = indexBuffer[faceIndex+tri[j]];
